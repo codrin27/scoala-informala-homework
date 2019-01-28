@@ -2,7 +2,6 @@ package UI;
 
 import Domain.Sale;
 import Service.Service;
-import Validator.Validation;
 import Validator.ValidationException;
 
 import java.time.LocalDate;

@@ -50,7 +50,6 @@ public class Repository {
      */
     public int rem(Product p, Integer quantity) {
         Integer q = all.get(p);
-        all.remove(p);
         Product pr = all.floorKey(p);
         if (q >= quantity) {
             q -= quantity;

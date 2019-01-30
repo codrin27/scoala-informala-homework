@@ -1,14 +1,20 @@
 import java.util.Scanner;
 
+/**
+ * author: Codrin
+ *
+ * The program
+ */
 public class Tema1 {
     public static void main(String[] args) {
         ex1();
-        int ex2 = Ex2_3.maxim();
-        int ex3 = Ex2_3.minimum();
+        Ex2_3.minimum();
+        Ex2_3.maxDigit();
         ex4();
         ex5();
         ex6_7();
-        //ex8();  Nu am reusit sa il fac
+        ex8();
+        ex9();
     }
 
     private static void ex1() {
@@ -16,27 +22,28 @@ public class Tema1 {
         System.out.println("Suma primelor 100 de numere mai mari ca 0 este= " + n);
     }
 
+    /**
+     * This class use 2 methods (maxDigit and minimum), maxDigit is displaying the biggest digit from a number.
+     * And "minimum" is displaying the smallest number from an array of numbers.
+     * I thought i can use this 2 methods in other exercices and i created a class.
+     */
     private static class Ex2_3 {
-        private static int maxim() {
-            int max;
+        private static void maxDigit() {
             Scanner scrie = new Scanner(System.in);
-            System.out.println("Introduceti numarul de elemente al sirului.");
+            System.out.println("Introduceti un numar: ");
             int n = scrie.nextInt();
-            int[] array = new int[n];
-            System.out.println("Introduceti numerele in sir:");
-            for (int i = 0; i < array.length; i++) {
-                array[i] = scrie.nextInt();
+            int maxD = n % 10;
+            int aux = n;
+            n = n / 10;
+            while (n != 0){
+                if(maxD < n % 10)
+                    maxD = n % 10;
+                n /= 10;
             }
-            max = array[0];
-            for (int i = 1; i < array.length; i++)
-                if (max < array[i]) {
-                    max = array[i];
-                }
-            System.out.println("Cel mai mare numar din sirul dumneavoastra este= " + max);
-            return max;
+            System.out.println("Ce mai mare cifra a numarului " + aux + " este = " + maxD);
         }
 
-        private static int minimum() {
+        private static void minimum() {
             int min;
             Scanner scrie = new Scanner(System.in);
             System.out.println("Introduceti numarul de elemente al sirului.");
@@ -52,7 +59,6 @@ public class Tema1 {
                     min = array[i];
                 }
             System.out.println("Cel mai mic numar din sirul dumneavoastra este= " + min);
-            return min;
         }
     }
 
@@ -60,7 +66,6 @@ public class Tema1 {
         Scanner scrie = new Scanner(System.in);
         System.out.println("Scrieti un numar pentru a fi indentificat daca este palindrom(ex:1221):");
         int n = scrie.nextInt();
-        int i = 0;
         int aux = n;
         int rev = 0;
         while (n != 0) {
@@ -113,8 +118,36 @@ public class Tema1 {
     private static void ex8() {
         Scanner scrie = new Scanner(System.in);
         System.out.println("Introduceti 3 numere= ");
-        int big = Ex2_3.maxim();
-        System.out.println("Cel mai mare numar este= " + big);
+        System.out.println("a= ");
+        int a = scrie.nextInt();
+        System.out.println("b= ");
+        int b = scrie.nextInt();
+        System.out.println("c= ");
+        int c = scrie.nextInt();
+        if (a > b) {
+            if (a > c)
+                System.out.println("Cel mai mare numar este= " + a);
+            else System.out.println("Cel mai mare numar este= " + c);
+        } else if (b > c)
+            System.out.println("Cel mai mare numar este= " + b);
+        System.out.println("Cel mai mare numar este= " + c);
+    }
+    private static void ex9(){
+        Scanner scrie = new Scanner(System.in);
+        System.out.println("Introduceti capetele intervalului.");
+        System.out.println("s= ");
+        int s = scrie.nextInt();
+        System.out.println("f= ");
+        int f = scrie.nextInt();
+        if (s > f) {
+            int aux = s;
+            s = f;
+            f = aux;
+        }
+        while (s <= f){
+            System.out.println(s + " ");
+            s++;
+        }
     }
 }
 
